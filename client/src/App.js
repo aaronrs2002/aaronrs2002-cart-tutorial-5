@@ -16,7 +16,7 @@ function App() {
   //let [purchaseLog, setPurchaseLog] = useState([]);
   let [timeSelected, setTimeSelected] = useState([]);
   let [compareTime, setCompareTime] = useState("");
-  const user = "favorite@email.net";
+  const user = "this@email.com";
 
 
 
@@ -53,6 +53,7 @@ function App() {
   const timeSearch = () => {
     if (activeModule === "analytics") {
       document.querySelector("select[name='itemSelect']").selectedIndex = 0;
+
     }
 
     let selectYr = document.querySelector("select[name='purchaseYr']").value;
