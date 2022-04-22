@@ -11,7 +11,7 @@ class PurchasingChart extends React.Component {
         this.state = {
             lineAmountSold: [],
             itemTotalSales: 0,
-            active: "",
+            active: "default",
             quantity: 0,
             series: [44, 55, 41, 17, 15],
             options: {
@@ -90,7 +90,7 @@ class PurchasingChart extends React.Component {
             }
             /////START LINE CHART JS
             let tempDayOfSale = this.props.timeSelected[i].saleId.substring(this.props.timeSelected[i].saleId.indexOf(":") + 1);
-            tempDayOfSale = tempDayOfSale.substring(0, 10);
+            tempDayOfSale = tempDayOfSale.substring(5, 10);
             if (tempDates.indexOf(tempDayOfSale) === -1) {
                 tempDates.push(tempDayOfSale);
                 tempAmountSold.push(0);
@@ -104,7 +104,7 @@ class PurchasingChart extends React.Component {
             }
             /////START LINE CHART JS
             let tempDayOfSale = this.props.timeSelected[i].saleId.substring(this.props.timeSelected[i].saleId.indexOf(":") + 1);
-            tempDayOfSale = tempDayOfSale.substring(0, 10);
+            tempDayOfSale = tempDayOfSale.substring(5, 10);
 
             if (tempDates.indexOf(tempDayOfSale) !== -1 && this.props.timeSelected[i].itemName === selected) {
                 tempAmountSold[tempDates.indexOf(tempDayOfSale)] = (Number(tempAmountSold[tempDates.indexOf(tempDayOfSale)]) + 1);
@@ -112,7 +112,6 @@ class PurchasingChart extends React.Component {
         }
 
         let tempTotal = tempOptions.reduce(function (a, b) { return a + b; }, 0);
-
 
         this.setState({
             lineChartOptions: {
@@ -129,10 +128,13 @@ class PurchasingChart extends React.Component {
                 labels: tempUserList,
             }
         });
+
     }
 
 
     render() {
+
+
         return (
             <div className="row">
                 <div className="col-md-12">
@@ -143,10 +145,10 @@ class PurchasingChart extends React.Component {
                     <div className="col-md-12">
                         <h4>Total sold: {this.state.itemTotalSales} out of {this.state.quantity}</h4>
                     </div> : null}
-                {this.state.itemTotalSales !== 0 ? <div className="col-md-6">
+                {this.state.itemTotalSales !== 0 && this.props.timeSelected.length > 0 ? <div className="col-md-6">
                     <ReactApexChart options={this.state.options} series={this.state.series} type="donut" />
                 </div> : null}
-                {this.state.itemTotalSales !== 0 ? <div className="col-md-6">
+                {this.state.itemTotalSales !== 0 && this.props.timeSelected.length > 0 ? <div className="col-md-6">
                     <ReactApexChart options={this.state.lineChartOptions} series={[{ "name": this.state.active, "data": this.state.lineAmountSold }]} type="line" height={350} />
                 </div> : null}
             </div>
