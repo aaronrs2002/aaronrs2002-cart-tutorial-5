@@ -1,5 +1,5 @@
 # aaronrs2002-cart-tutorial-5
-Building Sales Analytics - video tutorial coming soon.
+Building Sales Analytics - https://youtu.be/w73lHenpOJs
 
 Follow me through a basic introduction to writing a cart on the client side first. In later tutorials I will take this cart to the next level using a database, secure login and a content management system. At the end this could be used at a small business.
 
