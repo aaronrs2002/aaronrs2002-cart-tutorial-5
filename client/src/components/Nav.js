@@ -8,12 +8,11 @@ const Nav = (props) => {
         props.setActiveModule((activeModule) => whatSection);
         localStorage.setItem("activeModule", whatSection);
 
-        if (window.innerWidth <= 768) {
-            if (mobileNav === false) {
-                setMobileNav((mobileNav) => true);
-            } else {
-                setMobileNav((mobileNav) => false);
-            }
+
+        if (mobileNav === false) {
+            setMobileNav((mobileNav) => true);
+        } else {
+            setMobileNav((mobileNav) => false);
         }
     }
 
